@@ -24,7 +24,7 @@ function App() {
         <Route path="/dashboard/user" element={<UserDashboard/>}/>
         {/* <Route path="/dashboard/user" element={role === "user" ? <UserDashboard /> : <Navigate to="/" />} /> */}
         {/* <Route path="/dashboard/employee" element={role === "employee" ? <EmployeeDashboard /> : <Navigate to="/" />} /> */}
-        <Route path="/update-profile" element={<UpdateProfile />} />
+        <Route path="/profile" element={<UpdateProfile />} />
       </Routes>
     </BrowserRouter>
   );
