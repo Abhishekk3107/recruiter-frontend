@@ -4,6 +4,8 @@ import Register from './pages/Register';
 import UserDashboard from './pages/UserDashboard';
 import EmployeeDashboard from './pages/EmployeeDashboard';
 import UpdateProfile from './pages/UpdateProfile';
+import UpdateRecruiter from './pages/UpdateRecruiter';
+
 import { useEffect } from 'react';
 import Landing from './pages/Landing';
 
@@ -25,6 +27,7 @@ function App() {
         {/* <Route path="/dashboard/user" element={role === "user" ? <UserDashboard /> : <Navigate to="/" />} /> */}
         {/* <Route path="/dashboard/employee" element={role === "employee" ? <EmployeeDashboard /> : <Navigate to="/" />} /> */}
         <Route path="/profile" element={<UpdateProfile />} />
+        <Route path="/recruiter" element={<UpdateRecruiter />} />
       </Routes>
     </BrowserRouter>
   );
