@@ -1,57 +1,153 @@
 import React, { useState } from 'react';
-import { Menu, X, User } from 'lucide-react';
+import {
+  Menu, X, User, Bell,
+  Search,
+} from 'lucide-react';
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <div className="text-2xl font-bold text-gray-800">Recruitr</div>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6 items-center">
-          <a href="#" className="text-gray-700 hover:text-blue-600 transition">Home</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 transition">Jobs</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 transition">About</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 transition">Contact</a>
-          <User className="text-gray-600 hover:text-blue-600 cursor-pointer" />
-          <button className="px-4 py-1 border border-blue-500 text-blue-500 rounded hover:bg-blue-500 hover:text-white transition">
-            Login
-          </button>
-          <button className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
-            Register
-          </button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+    <nav className="bg-white border-b border-gray-200 fixed w-full z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <div className="flex-shrink-0 flex items-center">
+              <span className="text-2xl font-bold text-[#2563eb]">Recruitr</span>
+            </div>
+            <div className="hidden md:ml-6 md:flex md:space-x-8">
+              <a
+                href="#"
+                className="border-[#2563eb] text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              >
+                Dashboard
+              </a>
+              <a
+                href="#"
+                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              >
+                Jobs
+              </a>
+              <a
+                href="#"
+                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              >
+                Candidates
+              </a>
+              <a
+                href="#"
+                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              >
+                Analytics
+              </a>
+            </div>
+          </div>
+          <div className="hidden md:flex items-center">
+            <div className="relative mx-4">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-[#2563eb] focus:border-[#2563eb] sm:text-sm"
+                placeholder="Search candidates"
+                type="search"
+              />
+            </div>
+            <button className="p-1 rounded-full text-gray-400 hover:text-gray-500 relative">
+              <span className="sr-only">View notifications</span>
+              <Bell className="h-6 w-6" />
+              <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-400 ring-2 ring-white"></span>
+            </button>
+            <div className="ml-3 relative">
+              <div>
+                <button className="max-w-xs bg-gray-100 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2563eb]">
+                  <span className="sr-only">Open user menu</span>
+                  <div className="h-8 w-8 rounded-full bg-[#2563eb] flex items-center justify-center text-white">
+                    <User className="h-5 w-5" />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center md:hidden">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#2563eb]"
+            >
+              <span className="sr-only">Open main menu</span>
+              <Menu className="block h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden px-4 pb-4 space-y-2">
-          <a href="#" className="block text-gray-700 hover:text-blue-600">Home</a>
-          <a href="#" className="block text-gray-700 hover:text-blue-600">Jobs</a>
-          <a href="#" className="block text-gray-700 hover:text-blue-600">About</a>
-          <a href="#" className="block text-gray-700 hover:text-blue-600">Contact</a>
-          <div className="flex items-center space-x-4 mt-2">
-            <User className="text-gray-600" />
-            <button className="px-4 py-1 border border-blue-500 text-blue-500 rounded hover:bg-blue-500 hover:text-white transition">
-              Login
-            </button>
-            <button className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
-              Register
-            </button>
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden">
+          <div className="pt-2 pb-3 space-y-1">
+            <a href="#" className="bg-[#2563eb] text-white block pl-3 pr-4 py-2 text-base font-medium">
+              Dashboard
+            </a>
+            <a
+              href="#"
+              className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 block pl-3 pr-4 py-2 text-base font-medium"
+            >
+              Jobs
+            </a>
+            <a
+              href="#"
+              className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 block pl-3 pr-4 py-2 text-base font-medium"
+            >
+              Candidates
+            </a>
+            <a
+              href="#"
+              className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 block pl-3 pr-4 py-2 text-base font-medium"
+            >
+              Analytics
+            </a>
+          </div>
+          <div className="pt-4 pb-3 border-t border-gray-200">
+            <div className="flex items-center px-4">
+              <div className="flex-shrink-0">
+                <div className="h-10 w-10 rounded-full bg-[#2563eb] flex items-center justify-center text-white">
+                  <User className="h-6 w-6" />
+                </div>
+              </div>
+              <div className="ml-3">
+                <div className="text-base font-medium text-gray-800">Sarah Johnson</div>
+                <div className="text-sm font-medium text-gray-500">HR Manager @ Acme Inc</div>
+              </div>
+              <button className="ml-auto p-1 rounded-full text-gray-400 hover:text-gray-500">
+                <span className="sr-only">View notifications</span>
+                <Bell className="h-6 w-6" />
+              </button>
+            </div>
+            <div className="mt-3 space-y-1">
+              <a
+                href="#"
+                className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+              >
+                Your Profile
+              </a>
+              <a
+                href="#"
+                className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+              >
+                Settings
+              </a>
+              <a
+                href="#"
+                className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+              >
+                Sign out
+              </a>
+            </div>
           </div>
         </div>
       )}
     </nav>
+
   );
 }
 
