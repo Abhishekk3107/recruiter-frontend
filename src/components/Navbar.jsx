@@ -4,10 +4,11 @@ import {
   Search,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+  const navigate = useNavigate()
   return (
     <nav className="bg-white border-b border-gray-200 fixed w-full z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,7 +65,7 @@ function Navbar() {
                 <button className="max-w-xs bg-gray-100 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2563eb]">
                   <span className="sr-only">Open user menu</span>
                   <div className="h-8 w-8 rounded-full bg-[#2563eb] flex items-center justify-center text-white">
-                    <User className="h-5 w-5" />
+                    <User onClick={()=>navigate("/profile")} className="h-5 w-5" />
                   </div>
                 </button>
               </div>
@@ -86,9 +87,9 @@ function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden">
           <div className="pt-2 pb-3 space-y-1">
-            <a href="#" className="bg-[#2563eb] text-white block pl-3 pr-4 py-2 text-base font-medium">
+            <Link to="/dashboard/user" className="bg-[#2563eb] text-white block pl-3 pr-4 py-2 text-base font-medium">
               Dashboard
-            </a>
+            </Link>
             <a
               href="#"
               className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 block pl-3 pr-4 py-2 text-base font-medium"
@@ -112,7 +113,7 @@ function Navbar() {
             <div className="flex items-center px-4">
               <div className="flex-shrink-0">
                 <div className="h-10 w-10 rounded-full bg-[#2563eb] flex items-center justify-center text-white">
-                  <User className="h-6 w-6" />
+                  <User onClick={()=> navigate("/profile")} className="h-6 w-6" />
                 </div>
               </div>
               <div className="ml-3">
@@ -125,12 +126,12 @@ function Navbar() {
               </button>
             </div>
             <div className="mt-3 space-y-1">
-              <a
-                href="#"
+              <Link
+                to="/profile"
                 className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
               >
                 Your Profile
-              </a>
+              </Link>
               <a
                 href="#"
                 className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"

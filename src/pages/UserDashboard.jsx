@@ -15,10 +15,11 @@ import {
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import UserAiContent from "../components/UserAiContent"
+import { useNavigate } from "react-router-dom"
 
 export default function EmployeeDashboard() {
   const [currentBanner, setCurrentBanner] = useState(0)
-
+  const navigate = useNavigate();
   const banners = [
     {
       title: "All India NCAT",
@@ -97,7 +98,7 @@ export default function EmployeeDashboard() {
                     </div>
                     <h2 className="mt-4 text-xl font-bold text-gray-900">John Doe</h2>
                     <p className="text-sm text-gray-500">BCA Computers @ XYZ University</p>
-                    <button className="mt-4 w-full bg-[#2563eb] text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
+                    <button onClick={()=>navigate("/profile")} className="mt-4 w-full bg-[#2563eb] text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
                       Complete Profile
                     </button>
 
@@ -176,11 +177,7 @@ export default function EmployeeDashboard() {
                         <button className="bg-[#2563eb] text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
                           {banners[currentBanner].cta}
                         </button>
-                        {/* <img
-                          src={banners[currentBanner].logo || "/placeholder.svg"}
-                          alt="Company logo"
-                          className="h-10"
-                        /> */}
+                
                       </div>
                     </div>
 

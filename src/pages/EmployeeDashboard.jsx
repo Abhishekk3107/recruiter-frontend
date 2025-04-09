@@ -21,8 +21,11 @@ import {
 } from "lucide-react"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import { useNavigate } from "react-router-dom"
 
 export default function RecruiterDashboard() {
+
+    const navigate = useNavigate();
     const [currentBanner, setCurrentBanner] = useState(0)
     const [activeTab, setActiveTab] = useState("all")
     const [newsCategory, setNewsCategory] = useState("industry")
@@ -224,7 +227,7 @@ export default function RecruiterDashboard() {
                     </div>
                     <h2 className="mt-4 text-xl font-bold text-gray-900">Sarah Johnson</h2>
                     <p className="text-sm text-gray-500">HR Manager @ Acme Inc</p>
-                    <button className="mt-4 w-full bg-[#2563eb] text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
+                    <button className="mt-4 w-full bg-[#2563eb] text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors" onClick={()=>navigate("/profile")}>
                       View Profile
                     </button>
 
