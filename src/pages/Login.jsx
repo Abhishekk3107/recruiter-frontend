@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api";
 import { AlertCircle } from "lucide-react";
@@ -8,13 +8,8 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
-
-    useEffect(()=>{
-        if(localStorage.getItem("role")){
-            navigate(`/Dashboard/${localStorage.getItem("role")}`)
-        }
-    },[])
+    const navigate = useNavigate()
+  
 
     const validateForm = () => {
         if (!email.trim()) {
@@ -42,6 +37,7 @@ const Login = () => {
         if (!validateForm()) return;
 
         setIsLoading(true);
+
 
         try {
             const res = await API.post("/auth/login", { email, password });
