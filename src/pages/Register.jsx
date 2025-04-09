@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api";
 import { AlertCircle } from "lucide-react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -44,10 +46,12 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 mx-auto w-screen px-4">
+    <>
+    <Navbar/>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 mx-auto max-w-8xl -mb-12 px-4">
       <form
         onSubmit={handleRegister}
-        className="w-full max-w-md bg-white p-8 rounded-xl shadow-md space-y-4"
+        className="w-full max-w-md bg-white p-8 rounded-xl mt-16 shadow-md space-y-4"
       >
         <h2 className="text-xl font-semibold text-center text-gray-800">Register</h2>
 
@@ -138,9 +142,12 @@ export default function Register() {
           )}
         </button>
         <div className="text-center text-sm text-gray-500 mt-4">
-          <p>already have account: <a href="\">login</a></p>
+          <p>already have account: <a href="\login" className="text-blue-400 underline">login</a></p>
         </div>
       </form>
     </div>
+    
+    <Footer/>
+    </>
   );
 }
